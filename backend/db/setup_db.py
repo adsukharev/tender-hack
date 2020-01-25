@@ -20,7 +20,7 @@ def start_db():
     cursor.execute(Models.users)
     # cursor.execute(Models.tags)
     cursor.execute(Models.posts)
-    cursor.execute(Models.users_posts)
+    # cursor.execute(Models.users_posts)
     # cursor.execute(Models.posts_tags)
     cursor.execute(Models.likes)
     cursor.execute(Models.rating)

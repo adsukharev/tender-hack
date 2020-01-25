@@ -120,7 +120,7 @@ Example for PUT:
 ```
 
 ### POSTS
-GET    /api/posts/<user_id> -> get user's tag
+GET    /api/posts?user_id=1 -> get user's tags
 POST    /api/posts/ -> add tag
 Example for POST:
 ```
@@ -128,19 +128,8 @@ Example for POST:
     "user_id": 2,
     "info": "ывоароыврадыврадоывда",
     "picture": "data:image/jpeg;base64,/9j/4AAQSk"
+    "tag": "Sport"
 }
-```
-
-
-### Images
-```
-DELETE  /api/images/<image_id> -> delete one of five images
-```
-
-### History
-
-```
-POST    /api/history/<user_id> -> add history to user
 ```
 
 ### Likes

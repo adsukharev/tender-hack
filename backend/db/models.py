@@ -36,17 +36,18 @@ class Models:
 
     posts = '''
                     CREATE TABLE IF NOT EXISTS posts(
-                    post_id      SERIAL          NOT NULL PRIMARY KEY,
+                    post_id     SERIAL          NOT NULL PRIMARY KEY,
+                    user_id     INT REFERENCES users (user_id) ON DELETE CASCADE,     
                     info        TEXT,
                     picture     TEXT,
                     tag         TEXT
                     );'''
 
-    users_posts = '''
-                CREATE TABLE IF NOT EXISTS users_posts(
-                user_id     INT REFERENCES users (user_id) ON DELETE CASCADE,
-                post_id      INT REFERENCES posts (post_id) ON DELETE CASCADE
-                );'''
+    # users_posts = '''
+    #             CREATE TABLE IF NOT EXISTS users_posts(
+    #             user_id     INT REFERENCES users (user_id) ON DELETE CASCADE,
+    #             post_id      INT REFERENCES posts (post_id) ON DELETE CASCADE
+    #             );'''
 
     # tags = '''
     #             CREATE TABLE IF NOT EXISTS tags(

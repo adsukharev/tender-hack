@@ -43,8 +43,9 @@ class Base(Resource):
         try:
             connection, cursor = start_connection()
             cursor.execute(sql, record)
+            id = cursor.fetchone()
             close_connection(connection, cursor)
-            return "ok"
+            return id
         except Exception as e:
             print(e)
             return "error"
