@@ -15,6 +15,7 @@ services:
       - db
     env_file: .env
     entrypoint: ["python", "main.py"]
+#    entrypoint: ["python", "backend/main.py"]
 
 #  client:
 #    container_name: vue

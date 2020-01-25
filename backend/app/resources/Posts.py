@@ -40,8 +40,8 @@ class Posts(UsersCommon):
     def post(self, user_id):
         req_params = dict(request.form)
         self.__write_userdata_to_db(req_params, user_id)
-        params = self.__manage_user_params(req_params, user_id)
-
+        # params = self.__manage_user_params(req_params, user_id)
+        # print(req_params)
         return "ok"
 
 
@@ -53,18 +53,9 @@ class Posts(UsersCommon):
         return params
 
 
-    # @staticmethod
-    # def handle_tags(params, user_id):
-    #     if "tags" in params:
-    #         import json
-    #         tags = json.loads(params['tags'])
-    #         # tag_obj.manage_tags(tags, user_id)
-    #         # del params["tags"]
-    #     return params
-
     def __write_userdata_to_db(self, params, user_id):
         sql = '''INSERT INTO posts (info, tag)
                    VALUES (%s, %s);'''
-        record = (params.info, params.tag)
+        record = (params['info'], params['tag'])
         post_id = self.base_write(sql, record)
         print('post_id', post_id)

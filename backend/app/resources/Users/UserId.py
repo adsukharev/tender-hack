@@ -3,11 +3,9 @@ from app.resources.Common.UsersCommon import UsersCommon
 from app.resources.Profile.Images import Images
 from app.resources.Profile.Tags import Tags
 
-# from flask_jwt_extended import jwt_required
+
 COMPANY = {
-    'user_name': 'Компания',
     'contact_name': 'Контактное лицо',
-    'info': 'О компании',
     'inn': 'ИНН',
     'ogrn': 'ОГРН',
     'kpp': 'КПП',
@@ -15,7 +13,6 @@ COMPANY = {
     'contracts_made': 'Выполенных контрактов',
     'contracts_canceled': 'Отменненные контракты',
     'contracts_processing': 'Контракты в исполнении',
-    'avatar': 'Автара',
     'city': 'Город'
 }
 
@@ -31,15 +28,17 @@ class UserId(UsersCommon):
             ;"""
         record = (user_id,)
         user = self.base_get_one(sql, record)
-        data = self.change_data(user)
-        return data
+        if user is None:
+            return 'Нет пользователей'
+        self.change_data(user)
+        return user
 
     def change_data(self, user):
-        data = []
+        additional_info = []
         for key, value in user.items():
             if key in COMPANY:
-                data.append({'name': COMPANY[key], 'value': value})
-        return data
+                additional_info.append({'name': COMPANY[key], 'value': value})
+        user['additional_info'] = additional_info
 
     def delete(self, user_id):
         sql = """DELETE from users WHERE user_id = %s"""

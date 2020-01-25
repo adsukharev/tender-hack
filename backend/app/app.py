@@ -20,6 +20,7 @@ from .resources.loginPage.LogOut import LogOut
 # from .resources.loginPage.OAuthFB import OAuthFB
 from .resources.Rating import Rating
 from .resources.Search import Search
+from .resources.Posts import Posts
 from .resources.Profile.Fake import Fake
 from app.resources.Chat.Chats import Chats
 from app.resources.Chat.ChatId import ChatId
@@ -55,6 +56,7 @@ api.add_resource(Rating, '/rating')
 api.add_resource(Tags, '/tags')
 api.add_resource(Search, '/search')
 api.add_resource(Fake, '/fake/<user_id>')
+api.add_resource(Posts, '/posts/<user_id>')
 api.add_resource(Chats, '/chats')
 api.add_resource(ChatId, '/chats/<chat_id>')
 
