@@ -1,0 +1,18 @@
+.wrapper {
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.btnGroup {
+  display: flex;
+  width: 100%;
+}
+
+.btnGroup > * {
+  flex: 0 0 50%;
+}
+
+.backdrop {
+  z-index: 1;
+  color: #fff
+}

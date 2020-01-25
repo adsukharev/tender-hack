@@ -1,0 +1,51 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  extends: [
+    "plugin:@typescript-eslint/recommended",
+    'airbnb-typescript'
+  ],
+  plugins: [
+    '@typescript-eslint'
+  ],
+  env: {
+    browser: true,
+    jasmine: true,
+    jest: true
+  },
+  rules: {
+    'arrow-parens': ["error", "as-needed", { "requireForBlockBody": true }],
+    'spaced-comment': 'off',
+    'no-underscore-dangle': 'off',
+    'padded-blocks': 'off',
+    'object-curly-newline': ['error', { consistent: true, multiline: true }],
+    'eol-last': 'off',
+    'max-len': 'off',
+    'consistent-return': 'off',
+    'arrow-body-style': 'off',
+    'no-else-return': 'off',
+    'react/no-did-update-set-state': 'off',
+    'react/forbid-prop-types': 'off',
+    'react/require-default-props': 'off',
+    'no-use-before-define': 'off',
+    'import/prefer-default-export': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'react/button-has-type': 'off',
+    'react/destructuring-assignment': 'off',
+    'react/no-array-index-key': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-plusplus': 'off',
+    'react/prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/no-empty-interface': ['error', { allowSingleExtends: true }],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'react/state-in-constructor': 'off',
+    'jsx-a11y/no-autofocus': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'import/no-cycle': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+  },
+};
