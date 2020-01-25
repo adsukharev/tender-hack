@@ -5,6 +5,7 @@ from .database_config import Database
 
 def start_connection():
     try:
+        # print("start", Database)
         connection = psycopg2.connect(dbname=Database.DB_NAME,
                                       host=Database.DB_HOST,
                                       user=Database.DB_USER,
@@ -13,7 +14,7 @@ def start_connection():
         return connection, cursor
 
     except Exception as e:
-        print(e)
+        print("error start connect", e)
         return 0
 
 

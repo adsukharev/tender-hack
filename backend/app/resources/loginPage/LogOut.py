@@ -6,17 +6,17 @@ from time import gmtime, strftime
 
 class LogOut(Base):
 
-    @jwt_required
+    # #@jwt_required
     def delete(self):
         try:
-            self.__offline_status()
+            # self.__offline_status()
             session['login'] = ''
             session['user_id'] = ''
-            jti = get_raw_jwt()['jti']
-            sql = "INSERT INTO token_revokes (token) VALUES (%s);"
-            record = (jti,)
-            res = self.base_write(sql, record)
-            return res
+            # jti = get_raw_jwt()['jti']
+            # sql = "INSERT INTO token_revokes (token) VALUES (%s);"
+            # record = (jti,)
+            # res = self.base_write(sql, record)
+            # return res
         except Exception as e:
             print("logout", e)
 

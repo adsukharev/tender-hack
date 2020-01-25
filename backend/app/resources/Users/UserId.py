@@ -2,12 +2,12 @@ from flask import request
 from app.resources.Common.UsersCommon import UsersCommon
 from app.resources.Profile.Images import Images
 from app.resources.Profile.Tags import Tags
-from flask_jwt_extended import jwt_required
+# from flask_jwt_extended import jwt_required
 
 
 class UserId(UsersCommon):
 
-    @jwt_required
+    # #@jwt_required
     def get(self, user_id):
         sql = """
                 SELECT  u.*, r.sumLikes, l.likes, h.history, t.tags
@@ -43,7 +43,7 @@ class UserId(UsersCommon):
         res = self.base_write(sql, record)
         return res
 
-    @jwt_required
+    # #@jwt_required
     def put(self, user_id):
         req_params = dict(request.form)
         params = self.__manage_user_params(req_params, user_id)

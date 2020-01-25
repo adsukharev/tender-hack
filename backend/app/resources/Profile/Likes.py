@@ -7,7 +7,7 @@ from flask_jwt_extended import jwt_required
 
 class Likes(Base):
 
-    @jwt_required
+    #@jwt_required
     def post(self, to_like_id):
         checker = self.__check_avatar()
         if checker != 'ok':
@@ -31,7 +31,7 @@ class Likes(Base):
         res = chat.manage_chat(from_like_id, to_like_id)
         return res
 
-    @jwt_required
+    #@jwt_required
     def delete(self, to_like_id):
         checker = self.__check_avatar()
         if checker != 'ok':

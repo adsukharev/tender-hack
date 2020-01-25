@@ -49,7 +49,6 @@ Example for POST:
  ```
  {
     "message": "ok",
-    "access_token": "eyJ0eXAiOiJK",
     'user_id': "32"
 }
 ```
@@ -81,38 +80,26 @@ GET     /api/user_login/<login> -> get one user by login
 
 Response for getting one user:
 ```
+{
     "user_id": 4,
     "login": "test",
-    "email": "mr.andrey.sd@gmail.com",
-    "user_name": "myName",
-    "age": 25,
-    "sex": male,                -> 2 types: male, female
-    "preferences": "bisexual",  -> 3 types: bisexual, gomo, getero
+    "email": "vtb@gmail.com",
+    "user_name": "VTB",
+    "contact_name": "Олег Иванов",
+    "inn": 383242343,
+    "ogrn": 23434234,
+    "kpp": 3423423,
+    "contracts_all": 5,
+    "contracts_made": 2,
+    "contracts_canceled": 1,
+    contracts_processing: 2,
     "bio": "I like swimming",
-    "avatar": [
-        "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASAB",
-        "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQSADASDD"
-    ],
+    "avatar": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASAB",
     "notification": true,
     "fake": false,
     "city": "Moscow",
-    "latitude": 55.7116,
-    "longitude": 37.7382,
     "online": "online",
     "room": "asdas2342ddsa",
-    "sumlikes": 6,
-    "likes": [
-       "login1",
-       "login2"
-    ],
-    "history": [
-        "login1",
-        "login2"
-    ],
-    "tags": [
-        "sport",
-        "chess"
-    ]
 }
 
 ```
@@ -131,6 +118,19 @@ Example for PUT:
     "tags": ["sport", "fashion"]
 }
 ```
+
+### POSTS
+GET    /api/posts/<user_id> -> get user's tag
+POST    /api/posts/ -> add tag
+Example for POST:
+```
+{
+    "user_id": 2,
+    "info": "ывоароыврадыврадоывда",
+    "picture": "data:image/jpeg;base64,/9j/4AAQSk"
+}
+```
+
 
 ### Images
 ```

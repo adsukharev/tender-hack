@@ -27,7 +27,7 @@ class Search(Base):
                     ;"""
 
     # recommendation
-    @jwt_required
+    #@jwt_required
     def get(self):
         user_obj = UserId()
         user = dict(user_obj.get(session['user_id']))
@@ -97,7 +97,7 @@ class Search(Base):
         return res
 
     # search with user's input
-    @jwt_required
+    #@jwt_required
     def post(self):
         sql_condition = self.__make_sql()
         sql = self.sql.format(sql_condition)

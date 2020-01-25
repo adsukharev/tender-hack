@@ -1,6 +1,6 @@
 from flask import Blueprint, Flask, render_template
 from flask_restful import Api
-from flask_jwt_extended import JWTManager
+# from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from flask_socketio import SocketIO
 from .config import Config, mail_settings
@@ -37,11 +37,11 @@ app.config.from_object(Config)
 app.register_blueprint(api_bp, url_prefix='/api')
 app.config.update(mail_settings)
 CORS(app, resources={r"/*": {"origins": "*"}}, headers=['Content-Type'], expose_headers=['Access-Control-Allow-Origin'], supports_credentials=True)
-jwt = JWTManager(app)
+# jwt = JWTManager(app)
 socketio = SocketIO(app, cors_allowed_origins='*', cors_credentials=True)
 
 # Route
-api.add_resource(SignUp, '/signup')
+# api.add_resource(SignUp, '/signup')
 api.add_resource(SignIn, '/signin')
 api.add_resource(LogOut, '/logout')
 # api.add_resource(OAuthFB, '/oauth')
@@ -64,15 +64,15 @@ api.add_resource(SecretResource, '/secret')
 socketio.on_namespace(ChatSocket('/api/socket'))
 
 # token revoke
-@jwt.token_in_blacklist_loader
-def check_if_token_in_blacklist(decrypted_token):
-    jti = decrypted_token['jti']
-    sql = "SELECT token FROM token_revokes WHERE token = %s;"
-    record = (jti,)
-    token = Base.base_get_one(sql, record)
-    if not token:
-        return False
-    return True
+# @jwt.token_in_blacklist_loader
+# def check_if_token_in_blacklist(decrypted_token):
+#     jti = decrypted_token['jti']
+#     sql = "SELECT token FROM token_revokes WHERE token = %s;"
+#     record = (jti,)
+#     token = Base.base_get_one(sql, record)
+#     if not token:
+#         return False
+#     return True
 
 
 # @app.route('/chat')

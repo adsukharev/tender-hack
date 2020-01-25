@@ -1,7 +1,7 @@
 from app.resources.Common.UsersCommon import UsersCommon
 from flask import request, session
-from flask_jwt_extended import create_access_token
-import geoip2.database
+# from flask_jwt_extended import create_access_token
+# import geoip2.database
 
 
 class SignIn(UsersCommon):
@@ -13,8 +13,8 @@ class SignIn(UsersCommon):
             result = self.__check_login_password_status(login, password_request)
             if result != "ok":
                 return {'message': result}
-            if not self.add_location():
-                return {'message': 'error in adding location'}
+            # if not self.add_location():
+            #     return {'message': 'error in adding location'}
             result_obj = self.create_token()
             return result_obj
         except Exception as e:
@@ -41,10 +41,10 @@ class SignIn(UsersCommon):
         return "ok"
 
     def create_token(self):
-        access_token = create_access_token(identity=session['user_id'], expires_delta=False)
+        # access_token = create_access_token(identity=session['user_id'], expires_delta=False)
         result_obj = {
             'message': "ok",
-            'access_token': access_token,
+            # 'access_token': access_token,
             'user_id': session['user_id']
         }
         return result_obj

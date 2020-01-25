@@ -4,7 +4,7 @@ from flask_jwt_extended import jwt_required
 
 class Rating(Base):
 
-    @jwt_required
+    #@jwt_required
     def get(self):
         sql = '''   SELECT u.user_id, u.login, u.user_name, u.age, l.likes, r.sumLikes, array_agg(u.avatar[1]) as avatar
                     FROM users u

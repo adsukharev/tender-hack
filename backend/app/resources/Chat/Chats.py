@@ -7,7 +7,7 @@ class Chats(Base):
     from_like = ''
     to_like = ''
 
-    @jwt_required
+    #@jwt_required
     def get(self):
         user_id = session['user_id']
         sql = """   SELECT c.chat_name, c.chat_id

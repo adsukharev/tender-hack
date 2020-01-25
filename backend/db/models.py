@@ -5,42 +5,59 @@ class Models:
                 email           VARCHAR(64)     UNIQUE,
                 login           VARCHAR (64)    NOT NULL UNIQUE,
                 password        VARCHAR(1024),
-                social_id       VARCHAR (64),
-                user_name       VARCHAR(64)     NOT NULL,
-                age             SMALLINT,
-                sex             VARCHAR(8),
-                preferences     VARCHAR(32)     DEFAULT 'bisexual',
-                bio             TEXT,
-                avatar          TEXT[],
-                city            VARCHAR (64),
-                latitude        REAL,
-                longitude       REAL,
+                user_name    VARCHAR(64)     NOT NULL,
+                contact_name    VARCHAR(64),
+                avatar          TEXT,
+                inn             INT,
+                ogrn            INT,
+                kpp             INT,
+                contracts_all           INT,
+                contracts_made          INT,
+                contracts_canceled      INT,
+                contracts_processing   INT,
+                city            VARCHAR (64) DEFAULT 'Москва',
                 token           VARCHAR(1024),
-                status          BOOLEAN         NOT NULL DEFAULT '0',
+                status          BOOLEAN         NOT NULL DEFAULT '1',
                 notification    BOOLEAN         NOT NULL DEFAULT '1',
                 fake            BOOLEAN         NOT NULL DEFAULT '0',
                 online          VARCHAR(32)     NOT NULL DEFAULT 'online',
                 room            VARCHAR(1024)
                 );'''
 
-    tags = '''
-                CREATE TABLE IF NOT EXISTS tags(
-                tag_id         SERIAL          NOT NULL PRIMARY KEY,
-                tag_name       VARCHAR (64)    NOT NULL UNIQUE
-                );'''
 
-    users_tags = '''
-                CREATE TABLE IF NOT EXISTS users_tags(
+
+    # history = '''
+    #             CREATE TABLE IF NOT EXISTS history(
+    #             history_id          SERIAL  NOT NULL PRIMARY KEY,
+    #             from_history_fk     INT     NOT NULL REFERENCES users (user_id) ON DELETE CASCADE,
+    #             to_history_fk       INT     NOT NULL REFERENCES users (user_id) ON DELETE CASCADE
+    #             );'''
+
+    posts = '''
+                    CREATE TABLE IF NOT EXISTS posts(
+                    post_id      SERIAL          NOT NULL PRIMARY KEY,
+                    info        TEXT,
+                    picture     TEXT,
+                    tag         TEXT
+                    );'''
+
+    users_posts = '''
+                CREATE TABLE IF NOT EXISTS users_posts(
                 user_id     INT REFERENCES users (user_id) ON DELETE CASCADE,
-                tag_id      INT REFERENCES tags (tag_id) ON DELETE CASCADE
+                post_id      INT REFERENCES posts (post_id) ON DELETE CASCADE
                 );'''
 
-    history = '''
-                CREATE TABLE IF NOT EXISTS history(
-                history_id          SERIAL  NOT NULL PRIMARY KEY,
-                from_history_fk     INT     NOT NULL REFERENCES users (user_id) ON DELETE CASCADE,
-                to_history_fk       INT     NOT NULL REFERENCES users (user_id) ON DELETE CASCADE
-                );'''
+    # tags = '''
+    #             CREATE TABLE IF NOT EXISTS tags(
+    #             tag_id         SERIAL          NOT NULL PRIMARY KEY,
+    #             tag_name       VARCHAR (64)    NOT NULL UNIQUE
+    #             );'''
+    #
+    # posts_tags = '''
+    #             CREATE TABLE IF NOT EXISTS posts_tags(
+    #             post_id     INT REFERENCES posts (post_id) ON DELETE CASCADE,
+    #             tag_id      INT REFERENCES tags (tag_id) ON DELETE CASCADE
+    #             );'''
 
     likes = '''
                 CREATE TABLE IF NOT EXISTS likes(
@@ -80,8 +97,8 @@ class Models:
                  text           TEXT            NOT NULL,
                  author         INT             NOT NULL REFERENCES users(user_id) ON DELETE CASCADE
                  );'''
-    token_revokes = '''
-                CREATE TABLE IF NOT EXISTS token_revokes(
-                 token_id    SERIAL             NOT NULL PRIMARY KEY,
-                 token      VARCHAR(1024)       NOT NULL
-                );'''
+    # token_revokes = '''
+    #             CREATE TABLE IF NOT EXISTS token_revokes(
+    #              token_id    SERIAL             NOT NULL PRIMARY KEY,
+    #              token      VARCHAR(1024)       NOT NULL
+    #             );'''

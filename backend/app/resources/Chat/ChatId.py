@@ -5,7 +5,7 @@ from flask import session
 
 class ChatId(Base):
 
-    @jwt_required
+    #@jwt_required
     def get(self, chat_id):
 
         messages = self.__get_messages(chat_id)
