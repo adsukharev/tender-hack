@@ -218,10 +218,10 @@ users = [
 
 def create_user(user):
     sql = """INSERT INTO   users (email, login, password, user_name, contact_name, 
-                                    avatar, inn, ogrn, kpp, contracts_all, contracts_made, contracts_canceled, contracts_processing )
-                     VALUES (%s, %s, %s , %s, %s, %s, %s, %s , %s, %s, %s, %s, %s)
+                                    avatar, inn, ogrn, kpp, contracts_all, contracts_made, contracts_canceled, contracts_processing, info )
+                     VALUES (%s, %s, %s , %s, %s, %s, %s, %s , %s, %s, %s, %s, %s, %s)
                     ;"""
-    record = (user['email'], user['login'], user['password'], user['user_name'], user['contact_name'], user['avatar'], user['inn'], user['ogrn'], user['kpp'], user['contracts_all'], user['contracts_made'], user['contracts_canceled'], user['contracts_processing'])
+    record = (user['email'], user['login'], user['password'], user['user_name'], user['contact_name'], user['avatar'], user['inn'], user['ogrn'], user['kpp'], user['contracts_all'], user['contracts_made'], user['contracts_canceled'], user['contracts_processing'], user['info'])
     cursor.execute(sql, record)
     connection.commit()
 
