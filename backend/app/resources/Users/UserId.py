@@ -16,6 +16,7 @@ COMPANY = {
     'contracts_canceled': 'Отменненные контракты',
     'contracts_processing': 'Контракты в исполнении',
     'avatar': 'Автара',
+    'city': 'Город'
 }
 
 
