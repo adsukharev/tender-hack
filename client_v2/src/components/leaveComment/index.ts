@@ -1,1 +1,1 @@
-export {default} from './LeaveComment';
+export { default } from './LeaveComment';

@@ -8,17 +8,15 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: '100%',
-      backgroundColor: theme.palette.background.paper,
-    },
-    inline: {
-      display: 'inline',
-    },
-  }),
-);
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  root: {
+    width: '100%',
+    backgroundColor: theme.palette.background.paper,
+  },
+  inline: {
+    display: 'inline',
+  },
+}));
 
 export default function CommentList() {
   const classes = useStyles();
@@ -31,8 +29,8 @@ export default function CommentList() {
         </ListItemAvatar>
         <ListItemText
           primary="Кооператив Ромашка"
-          secondary={
-            <React.Fragment>
+          secondary={(
+            <>
               <Typography
                 component="span"
                 variant="body2"
@@ -41,9 +39,9 @@ export default function CommentList() {
               >
                 Иван Иванов
               </Typography>
-              {" — Очень приятно работать!!!"}
-            </React.Fragment>
-          }
+               — Очень приятно работать!!!
+            </>
+          )}
         />
       </ListItem>
       <Divider variant="inset" component="li" />
@@ -53,8 +51,8 @@ export default function CommentList() {
         </ListItemAvatar>
         <ListItemText
           primary="ООО ИНГРОСТРОЙ"
-          secondary={
-            <React.Fragment>
+          secondary={(
+            <>
               <Typography
                 component="span"
                 variant="body2"
@@ -63,9 +61,9 @@ export default function CommentList() {
               >
                 Алексей Петров
               </Typography>
-              {" — Заказ доставили быстро!"}
-            </React.Fragment>
-          }
+               — Заказ доставили быстро!
+            </>
+          )}
         />
       </ListItem>
     </List>

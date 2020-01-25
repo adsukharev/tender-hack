@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Avatar, Box, Button,
   Checkbox,
@@ -6,21 +6,22 @@ import {
   CssBaseline,
   FormControlLabel, Grid, Link,
   TextField,
-  Typography
+  Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Link as RouterLink } from 'react-router-dom';
+import UserStore from "../../UserStore";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      Copyright ©
       <Link color="inherit" href="https://material-ui.com/">
         Tender Hack
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'}
+      .
     </Typography>
   );
 }
@@ -48,6 +49,26 @@ const useStyles = makeStyles(theme => ({
 const Login: React.FC = () => {
   const classes = useStyles();
 
+  const [login, updateLogin] = useState('');
+  const [password, updatePassword] = useState('');
+  const history = useHistory();
+
+  const signIn = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (login && password) {
+      UserStore.login({ login: login, password:password }, history);
+    }
+  }
+
+  const onLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateLogin(event.target.value);
+  }
+
+  const onPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updatePassword(event.target.value);
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -58,19 +79,21 @@ const Login: React.FC = () => {
         <Typography component="h1" variant="h5">
           Войти
         </Typography>
-        <form className={classes.form} noValidate onSubmit={(e) => e.preventDefault()}>
+        <form className={classes.form} noValidate onSubmit={signIn}>
           <TextField
+            onChange={onLoginChange}
             variant="outlined"
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Почта"
-            name="email"
-            autoComplete="email"
+            label="Логин"
+            name="login"
+            autoComplete="login"
             autoFocus
           />
           <TextField
+            onChange={onPasswordChange}
             variant="outlined"
             margin="normal"
             required
@@ -91,8 +114,6 @@ const Login: React.FC = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            component={RouterLink}
-            to="/profile/1"
           >
             Войти
           </Button>
@@ -104,7 +125,7 @@ const Login: React.FC = () => {
             </Grid>
             <Grid item>
               <Link href="#" variant="body2">
-                {"Зарегистрируйтесь прямо сейчас!"}
+                Зарегистрируйтесь прямо сейчас!
               </Link>
             </Grid>
           </Grid>

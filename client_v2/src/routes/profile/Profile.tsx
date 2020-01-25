@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect, useState} from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import {
   Backdrop,
   Button,
@@ -8,43 +8,42 @@ import {
   CardMedia,
   CircularProgress,
   Grid,
-  Typography
+  Typography,
 } from '@material-ui/core';
-import { ThumbUp, ThumbDown } from '@material-ui/icons'
-import styles from './Profile.module.scss';
-import CommentList from "../../components/commentList";
-import InformationList from "../../components/informationList";
-import LeaveComment from "../../components/leaveComment";
-import {getProfileData} from "../../services/api";
+import { ThumbUp, ThumbDown } from '@material-ui/icons';
 import { useParams } from 'react-router-dom';
+import styles from './Profile.module.scss';
+import CommentList from '../../components/commentList';
+import InformationList from '../../components/informationList';
+import LeaveComment from '../../components/leaveComment';
+import { getProfileData } from '../../services/api';
 
 interface IProps {
-  id?: number,
-  children?: ReactNode
-};
+  id?: number;
+  children?: ReactNode;
+}
 
 const Profile: React.FC = (props: IProps) => {
 
   const [data, setData] = useState({} as any);
   const [isLoading, setIsLoading] = useState(true);
 
-  let { id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    getProfileData(id as string).then(response => {
-        setData(response);
-        setIsLoading(false);
-      }
-    );
-  },[])
+    getProfileData(id as string).then((response) => {
+      setData(response);
+      setIsLoading(false);
+    });
+  }, []);
 
   if (isLoading) {
     return (
       <Backdrop className={styles.backdrop} open>
         <CircularProgress color="inherit" />
       </Backdrop>
-    )
+    );
   }
 
   return (
@@ -65,21 +64,21 @@ const Profile: React.FC = (props: IProps) => {
           </Typography>
         </CardContent>
         <CardContent>
-          <InformationList info={data.additional_info}/>
+          <InformationList info={data.additional_info} />
         </CardContent>
-        <CardActions classes={{root: styles.btnGroup}} onSubmit={(e) => e.preventDefault()}>
+        <CardActions classes={{ root: styles.btnGroup }} onSubmit={e => e.preventDefault()}>
           <Button size="large" color="primary">
             <ThumbUp />
           </Button>
           <Button size="large" color="secondary">
-            <ThumbDown/>
+            <ThumbDown />
           </Button>
         </CardActions>
         <CardContent>
           <CommentList />
         </CardContent>
         <CardActions>
-            <LeaveComment/>
+          <LeaveComment />
         </CardActions>
       </Card>
     </Grid>
