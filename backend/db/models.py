@@ -8,6 +8,7 @@ class Models:
                 user_name    VARCHAR(64)     NOT NULL,
                 contact_name    VARCHAR(64),
                 avatar          TEXT,
+                info            TEXT,
                 inn             INT,
                 ogrn            INT,
                 kpp             INT,
