@@ -58,11 +58,20 @@ const Chat: React.FC = (props: any) => {
 
   const send = () => {
     console.log(message);
-    setMessages([...messages, {
+    let currentMessages = [...messages, {
       from: true,
       time: new Date().toTimeString().slice(0,5),
       message: message
-    }]);
+    }];
+    setMessages(currentMessages);
+
+    setTimeout(() => {
+      setMessages([...currentMessages, {
+        from: false,
+        time: new Date().toTimeString().slice(0,5),
+        message: "Перезагрузите страницу с:"
+      }]);
+    }, 1000);
 
     updateMessage('');
 
