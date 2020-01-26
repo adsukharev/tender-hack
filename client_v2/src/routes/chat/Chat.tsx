@@ -76,7 +76,7 @@ const Chat: React.FC = (props: any) => {
       <Paper className={styles.container}>
         {messages.map((item:any,idx:number) => {
           return (
-            <Card key={idx} classes={{root: item.from ? styles.from : styles.to}}>
+            <Card key={idx} classes={{root: !item.from ? styles.from : styles.to}}>
               <CardContent>{item.message}</CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
                 {item.time}
@@ -86,6 +86,7 @@ const Chat: React.FC = (props: any) => {
         })
 
         }
+
 
       </Paper>
       <Paper component="form" className={classes.root} onSubmit={send}>
