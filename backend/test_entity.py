@@ -165,9 +165,6 @@ def create_user(user):
     connection.commit()
 
 
-
-
-
 def create_posts(post):
     sql = """INSERT INTO   posts (user_id, title, description, image, tag, dateAt, likes, comments)
                      VALUES (%s, %s, %s , %s, %s, %s, %s, %s)
