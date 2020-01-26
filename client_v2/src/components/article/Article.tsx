@@ -43,6 +43,9 @@ export default function Article(props: IProps) {
                 {post.title}
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
+                {post.user_name}
+              </Typography>
+              <Typography variant="subtitle1" color="textSecondary">
                 {post.dateat}
               </Typography>
               <Typography variant="subtitle1" paragraph>
