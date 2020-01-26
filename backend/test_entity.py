@@ -31,6 +31,8 @@ users = [
         'contracts_canceled': 1,
         'contracts_processing': 1,
         'avatar': usersImages[0],
+        'likes': 4233,
+        'dislikes': 434
     },
     {
         'email': "test2@mail.ru",
@@ -46,7 +48,10 @@ users = [
         'contracts_made': 3,
         'contracts_canceled': 3,
         'contracts_processing': 1,
-        'avatar': usersImages[1]
+        'avatar': usersImages[1],
+        'likes': 2137,
+        'dislikes': 123
+
     },
     {
         'email': "test3@mail.ru",
@@ -62,7 +67,9 @@ users = [
         'contracts_made': 1,
         'contracts_canceled': 0,
         'contracts_processing': 1,
-        'avatar': usersImages[2]
+        'avatar': usersImages[2],
+        'likes': 1709,
+        'dislikes': 75
     },
     {
         'email': "test4@mail.ru",
@@ -78,7 +85,9 @@ users = [
         'contracts_made': 10,
         'contracts_canceled': 1,
         'contracts_processing': 1,
-        'avatar': usersImages[3]
+        'avatar': usersImages[3],
+        'likes': 3788,
+        'dislikes': 548
     },
     {
         'email': "test5@mail.ru",
@@ -94,7 +103,9 @@ users = [
         'contracts_made': 1,
         'contracts_canceled': 1,
         'contracts_processing': 2,
-        'avatar': usersImages[4]
+        'avatar': usersImages[4],
+        'likes': 290,
+        'dislikes': 27
     }
 ]
 
@@ -144,12 +155,12 @@ posts = [
 
 def create_user(user):
     sql = """INSERT INTO   users (email, login, password, user_name, contact_name, 
-                                    avatar, inn, ogrn, kpp, contracts_all, contracts_made, contracts_canceled, contracts_processing, info )
-                     VALUES (%s, %s, %s , %s, %s, %s, %s, %s , %s, %s, %s, %s, %s, %s)
+                                    avatar, inn, ogrn, kpp, contracts_all, contracts_made, contracts_canceled, contracts_processing, info, likes, dislikes)
+                     VALUES (%s, %s, %s , %s, %s, %s, %s, %s , %s, %s, %s, %s, %s, %s, %s, %s)
                     ;"""
     record = (user['email'], user['login'], user['password'], user['user_name'], user['contact_name'], user['avatar'],
               user['inn'], user['ogrn'], user['kpp'], user['contracts_all'], user['contracts_made'],
-              user['contracts_canceled'], user['contracts_processing'], user['info'])
+              user['contracts_canceled'], user['contracts_processing'], user['info'], user['likes'], user['dislikes'])
     cursor.execute(sql, record)
     connection.commit()
 
@@ -171,8 +182,6 @@ connection, cursor = start_connection()
 try:
     for user in users:
         create_user(user)
-    for post in posts:
-        create_posts(post)
 
 except Exception as e:
     print(e)

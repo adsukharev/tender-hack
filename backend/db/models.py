@@ -22,7 +22,9 @@ class Models:
                 notification    BOOLEAN         NOT NULL DEFAULT '1',
                 fake            BOOLEAN         NOT NULL DEFAULT '0',
                 online          VARCHAR(32)     NOT NULL DEFAULT 'online',
-                room            VARCHAR(1024)
+                room            VARCHAR(1024),
+                likes           INT,
+                dislikes        INT
                 );'''
 
 
