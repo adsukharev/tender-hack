@@ -5,7 +5,7 @@ import SessionStore from 'mobx-session';
 import { signIn, logout } from './services/api';
 
 class Store {
-  user: any;
+  user: any = null;
   loginError: boolean = false;
   logoutError: boolean = false;
 
@@ -55,12 +55,13 @@ class Store {
     }
   }
 
-  logout = async () => {
+  logout = async (history:any) => {
     try {
       runInAction('Init Logout', () => {
         this.logoutError = false;
       });
       await logout();
+      history.push('/login')
       this.removeUser();
     } catch (error) {
       runInAction('Error Logout', () => {

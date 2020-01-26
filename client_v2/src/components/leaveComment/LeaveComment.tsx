@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
-export default function LeaveComment() {
+export default function LeaveComment(props:any) {
   const classes = useStyles();
 
   return (
     <Paper component="form" className={classes.root}>
       <InputBase
         className={classes.input}
-        placeholder="Оставить комментарий"
+        placeholder={props.text ? props.text : "Оставить комментарий"}
       />
       <Divider className={classes.divider} orientation="vertical" />
       <IconButton color="primary" className={classes.iconButton} aria-label="directions">

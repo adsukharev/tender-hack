@@ -17,6 +17,7 @@ import CommentList from '../../components/commentList';
 import InformationList from '../../components/informationList';
 import LeaveComment from '../../components/leaveComment';
 import { getProfileData } from '../../services/api';
+import Like from "../../components/like";
 
 interface IProps {
   id?: number;
@@ -68,18 +69,15 @@ const Profile: React.FC = (props: IProps) => {
         </CardContent>
         <CardActions classes={{ root: styles.btnGroup }} onSubmit={e => e.preventDefault()}>
           <Button size="large" color="primary">
-            <ThumbUp />
+            <Like iconType="like" count={data.likes} />
           </Button>
           <Button size="large" color="secondary">
-            <ThumbDown />
+            <Like iconType="dislike" count={data.dislikes} />
           </Button>
         </CardActions>
         <CardContent>
           <CommentList />
         </CardContent>
-        <CardActions>
-          <LeaveComment />
-        </CardActions>
       </Card>
     </Grid>
   );

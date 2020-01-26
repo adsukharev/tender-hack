@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 500px;
+}
+
+
+.from, .to {
+  justify-self: end;
+  flex: 0 0 auto;
+  height: auto;
+  width: 320px;
+  margin: 16px;
+  padding: 16px;
+}
+
+.from {
+  background-color: #c4cfd1 !important;
+  align-self: flex-start;
+  color: #000 !important;
+}
+
+
+.to {
+  background-color: #0087dd !important;
+  align-self: flex-end;
+  color: #fff !important;
+}

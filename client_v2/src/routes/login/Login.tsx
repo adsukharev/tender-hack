@@ -57,7 +57,9 @@ const Login: React.FC = () => {
     e.preventDefault();
 
     if (login && password) {
+      console.log(UserStore.user);
       UserStore.login({ login: login, password:password }, history);
+      console.log(UserStore.user);
     }
   }
 
