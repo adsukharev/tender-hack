@@ -76,7 +76,7 @@ const Profile: React.FC = (props: IProps) => {
           </Button>
         </CardActions>
         <CardActions classes={{ root: styles.btnGroup }} onSubmit={e => e.preventDefault()}>
-          <Button size="large" color="primary" component={Link} to="/dialog">
+          <Button size="large" color="primary" component={Link} to="/dialog/232">
             <Like iconType="comment" count="написать сообщение" />
           </Button>
         </CardActions>
