@@ -38,9 +38,13 @@ class Models:
                     CREATE TABLE IF NOT EXISTS posts(
                     post_id     SERIAL          NOT NULL PRIMARY KEY,
                     user_id     INT REFERENCES users (user_id) ON DELETE CASCADE,     
-                    info        TEXT,
-                    picture     TEXT,
-                    tag         TEXT
+                    title       TEXT UNIQUE,
+                    description        TEXT,
+                    image     TEXT,
+                    tag         TEXT,
+                    dateAt      TEXT,
+                    likes       INT,
+                    comments    INT
                     );'''
 
     # users_posts = '''
