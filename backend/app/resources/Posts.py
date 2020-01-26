@@ -12,8 +12,9 @@ class Posts(UsersCommon):
     def get(self):
         # user_id = request.args.get('user_id')
         sql = """
-                SELECT  p.*
+                SELECT  p.*, u.user_name
                 FROM posts p
+                INNER JOIN  users u ON u.user_id = p.user_id
             ;"""
         # record = (user_id,)
         posts = self.base_get_all(sql)

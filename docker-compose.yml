@@ -14,8 +14,8 @@ services:
     depends_on:
       - db
     env_file: .env
-    entrypoint: ["python", "main.py"]
-#    entrypoint: ["python", "backend/main.py"]
+#    entrypoint: ["python", "main.py"]
+    entrypoint: ["python", "backend/main.py"]
 
 #  client:
 #    container_name: vue
@@ -30,16 +30,16 @@ services:
 #    environment:
 #      - VUE_APP_HOST_URL=http://localhost:5000
 
-  client_v2:
-    container_name: react
-    build: ./client_v2
-    volumes:
-      - './client_v2:/app/client_v2'
-      - '/app/client_v2/node_modules'
-    ports:
-      - '3000:3000'
-    depends_on:
-      - backend
+#  client_v2:
+#    container_name: react
+#    build: ./client_v2
+#    volumes:
+#      - './client_v2:/app/client_v2'
+#      - '/app/client_v2/node_modules'
+#    ports:
+#      - '3000:3000'
+#    depends_on:
+#      - backend
 
   db:
     container_name: postgres
