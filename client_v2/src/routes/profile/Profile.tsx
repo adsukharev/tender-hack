@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { ThumbUp, ThumbDown } from '@material-ui/icons';
-import { useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import styles from './Profile.module.scss';
 import CommentList from '../../components/commentList';
 import InformationList from '../../components/informationList';
@@ -73,6 +73,11 @@ const Profile: React.FC = (props: IProps) => {
           </Button>
           <Button size="large" color="secondary">
             <Like iconType="dislike" count={data.dislikes} />
+          </Button>
+        </CardActions>
+        <CardActions classes={{ root: styles.btnGroup }} onSubmit={e => e.preventDefault()}>
+          <Button size="large" color="primary" component={Link} to="/dialog">
+            <Like iconType="comment" count="написать сообщение" />
           </Button>
         </CardActions>
         <CardContent>
