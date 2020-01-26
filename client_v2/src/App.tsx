@@ -58,7 +58,7 @@ const App: React.FC = () => {
             component={Login}
           />
           <Route
-            path="/dialog"
+            path="/dialog/:id"
             component={Chat}
           />
           <Route

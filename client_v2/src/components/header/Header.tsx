@@ -64,13 +64,18 @@ const Header: React.FC = () => {
           <ListItemIcon><People/></ListItemIcon>
           <ListItemText primary="Рейтинг" />
         </ListItem>
-        <ListItem button key="dialogs" component={Link} to="/dialog">
+        <ListItem button key="dialogs" component={Link} to="/dialog/1">
           <ListItemIcon><Message /></ListItemIcon>
           <ListItemText primary="Диалоги" />
         </ListItem>
         <ListItem button key="feed" component={Link} to="/feed">
           <ListItemIcon><DynamicFeed /></ListItemIcon>
           <ListItemText primary="Лента" />
+        </ListItem>
+        <Divider />
+        <ListItem button key="dialog" component={Link} to="/dialog/general">
+          <ListItemIcon><Message /></ListItemIcon>
+          <ListItemText primary="Чат с платформой" />
         </ListItem>
       </List>
       { user != null &&

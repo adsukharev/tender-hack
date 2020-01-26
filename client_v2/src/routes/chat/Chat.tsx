@@ -14,6 +14,7 @@ import styles from './Chat.module.scss';
 import LeaveComment from "../../components/leaveComment/LeaveComment";
 import {AddComment} from "@material-ui/icons";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import {useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -36,16 +37,22 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const initialMessages: any = [
-  {from: false, time:"12:31",message:"Привет"},
-  {from: false, time:"12:31",message:"Привет"},
-  {from: true, time:"12:31",message:"Привет"},
-  {from: false, time:"12:31",message:"Привет"},
-]
+  {from: false, time:"12:31",message:"Добрый день! Задайте вопрос службе поддержки!"},
+  {from: true, time:"12:32",message:"Текущие контракты"},
+  {from: false, time:"12:34",message:"Активные контракты:\n\n1. ВТБ - заказ на 250 000 рублей"},
+];
+
+const initialMessages2: any = [
+  {from: false, time:"15:31",message:"Добрый день! Подскажите, когда будет следующий заказ?"},
+  {from: true, time:"15:32",message:"22.02.2020"},
+  {from: false, time:"15:34",message:"Спасибо!"},
+];
 
 const Chat: React.FC = (props: any) => {
   const classes = useStyles();
   const [message, updateMessage] = useState('');
-  const [messages, setMessages] = useState(initialMessages);
+  const { id } = useParams();
+  const [messages, setMessages] = useState(id == 'general' ? initialMessages : initialMessages2);
 
 
 
