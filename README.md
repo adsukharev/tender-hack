@@ -1,27 +1,15 @@
-# Matcha
-Social network for dating
+# QSoft
+Social network
 
-Full specification: https://cdn.intra.42.fr/pdf/pdf/968/matcha.en.pdf
 
 [Server] Python (Flask)
 
-[Client] Vue, Bootstrap4
+[Client] React
 
 [Database] PostgreSQL
 
 [Deployment] Docker
 
-Goals:
-
-- Everything must be secured (JWT, SQL-debugging, XSS)
-- Sign In and Sign Up components with email confirmation
-- User Profile (biography, tags, pictures, fame rating, etc)
-- GPS Location
-- Match profiles (Same geographic area, With a maximum of common tags, With a maximum “fame rating”, etc)
-- Chat
-- Notifications in real time about likes, messages
-
-P.S  When two people “like” each other, we will say that they are “connected” and are now able to chat
 ## Getting Started
 
 #### Install npm
