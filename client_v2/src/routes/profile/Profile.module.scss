@@ -12,6 +12,12 @@
   flex: 0 0 50%;
 }
 
+
+.btnGroup > *:only-child {
+  flex: 0 0 100%;
+}
+
+
 .backdrop {
   z-index: 1;
   color: #fff
