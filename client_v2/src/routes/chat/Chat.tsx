@@ -64,14 +64,15 @@ const Chat: React.FC = (props: any) => {
       message: message
     }];
     setMessages(currentMessages);
-
-    setTimeout(() => {
-      setMessages([...currentMessages, {
-        from: false,
-        time: new Date().toTimeString().slice(0,5),
-        message: "Перезагрузите страницу с:"
-      }]);
-    }, 1000);
+    if (id == 'general') {
+      setTimeout(() => {
+        setMessages([...currentMessages, {
+          from: false,
+          time: new Date().toTimeString().slice(0,5),
+          message: "Перезагрузите страницу с:"
+        }]);
+      }, 1000);
+    }
 
     updateMessage('');
 
