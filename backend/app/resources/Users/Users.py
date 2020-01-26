@@ -12,6 +12,7 @@ class Users(Base):
         sql = """
                 SELECT  *
                 FROM users
+                ORDER BY likes DESC
             ;"""
         users = self.base_get_all(sql)
         # self.change_data(users)
