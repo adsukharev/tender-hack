@@ -10,15 +10,13 @@ class Posts(UsersCommon):
 
     # #@jwt_required
     def get(self):
-        user_id = request.args.get('user_id')
+        # user_id = request.args.get('user_id')
         sql = """
                 SELECT  p.*
                 FROM posts p
-                LEFT JOIN users u ON u.user_id = p.user_id
-                WHERE u.user_id = %s
             ;"""
-        record = (user_id,)
-        posts = self.base_get_limited_all(sql, record)
+        # record = (user_id,)
+        posts = self.base_get_all(sql)
         return posts
 
     def post(self):
