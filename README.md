@@ -1,5 +1,5 @@
 # QSoft
-Social network
+Social network for tenders
 
 
 [Server] Python (Flask)
@@ -25,17 +25,16 @@ https://docs.docker.com/compose/install/
 The second one:
 ```
 brew install docker docker-machine docker-compose
-docker-machine create --driver virtualbox Matcha
-eval $(docker-machine env Matcha)
+docker-machine create --driver virtualbox QSoft
+eval $(docker-machine env QSoft)
 ```
 
 ## Build and Run
 
 ```
-git clone https://github.com/AndreiSukharev/Matcha.git matcha
-cd matcha
+git clone https://github.com/AndreiSukharev/tender.git social
+cd social
 docker-compose up --build
-sh dbGPS.sh
 cd client
 npm i
 npm run serve
